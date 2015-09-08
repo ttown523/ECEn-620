@@ -1,0 +1,47 @@
+//load the value 
+0100100000000011 //jump to the add subroutine
+0100100000001000 //jump to the and subroutine
+0100100000001010 //jump to the not subroutine
+0000001111111100 //branch to the next instruction if the the NOT produced a positive result
+
+//add subroutine
+0010000000001010 //load a1 from memory
+0010001000001010 //load a2 from memory
+0001010000000001 //add a1 and a2
+0011010000001001 //store add result back to memory
+0010011000001000 //read back memory and see if it was stored correctly
+1100000111000000 //return to the next instruction
+
+//AND subroutine
+0010100000000111 //load b1 from memory
+0101101100110000 //AND b1 with an immediate value
+1100000111000000 //return to the next instruction
+
+//not subroutine
+1001101100111111 //NOT R4 
+1100000111000000 //return to the next instruction
+
+//variable memory
+0000000000000100  //a1
+0000000000000011  //a2
+0000000000000000  //a1 and a2;
+1010101010101010  //b1  
+
+/* Original test sequence for 224
+0101000000100000
+0001001000100001
+1001011010111111
+0000111000000100 
+0000000000000111
+0000000000010010
+0000000000000011
+0000000000000000
+0100100000000001
+0000111111110110
+0010010111111001
+0010001111111010
+0001110010000001
+0011110111111001
+1100000111000000
+0000000000000000
+*/ 
